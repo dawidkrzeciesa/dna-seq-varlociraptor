@@ -10,7 +10,7 @@ report: "report/workflow.rst"
 
 
 scattergather:
-    calling=16,
+    calling=64,
 
 
 # Allow users to fix the underlying OS via singularity.

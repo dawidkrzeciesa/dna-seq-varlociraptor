@@ -1,1 +1,41 @@
-sample_name	alias	group	platform	purity	panel	umi_read	umi_read_structure	datatype	calling
+sample_name	alias	group	platform	purity	sex	panel	ffpe	umi_read	umi_read_structure	datatype	calling
+case-01_N	normal	case-01	ILLUMINA		female					dna	variants
+case-01_T	tumor	case-01	ILLUMINA	0.7	female					dna	variants
+case-02_N	normal	case-02	ILLUMINA		male					dna	variants
+case-02_T	tumor	case-02	ILLUMINA	0.7	male					dna	variants
+case-03_N	normal	case-03	ILLUMINA		male					dna	variants
+case-03_T	tumor	case-03	ILLUMINA	0.3	male					dna	variants
+case-04_N	normal	case-04	ILLUMINA		female					dna	variants
+case-04_T	tumor	case-04	ILLUMINA	0.9	female					dna	variants
+case-05_N	normal	case-05	ILLUMINA		male					dna	variants
+case-05_T	tumor	case-05	ILLUMINA	0.8	male					dna	variants
+case-06_N	normal	case-06	ILLUMINA		male					dna	variants
+case-06_T	tumor	case-06	ILLUMINA	0.6	male					dna	variants
+case-07_N	normal	case-07	ILLUMINA		male					dna	variants
+case-07_T	tumor	case-07	ILLUMINA	0.5	male					dna	variants
+case-08_N	normal	case-08	ILLUMINA		female					dna	variants
+case-08_T	tumor	case-08	ILLUMINA	0.9	female					dna	variants
+case-09_N	normal	case-09	ILLUMINA		male					dna	variants
+case-09_T	tumor	case-09	ILLUMINA	0.6	male					dna	variants
+case-10_N	normal	case-10	ILLUMINA		female					dna	variants
+case-10_T	tumor	case-10	ILLUMINA	0.95	female					dna	variants
+case-11_N	normal	case-11	ILLUMINA		male					dna	variants
+case-11_T	tumor	case-11	ILLUMINA	0.8	male					dna	variants
+case-12_N	normal	case-12	ILLUMINA		male					dna	variants
+case-12_T	tumor	case-12	ILLUMINA	0.7	male					dna	variants
+case-13_N	normal	case-13	ILLUMINA		female					dna	variants
+case-13_T	tumor	case-13	ILLUMINA	0.8	female					dna	variants
+case-14_N	normal	case-14	ILLUMINA		female					dna	variants
+case-14_T	tumor	case-14	ILLUMINA	0.8	female					dna	variants
+case-15_N	normal	case-15	ILLUMINA		male					dna	variants
+case-15_T	tumor	case-15	ILLUMINA	0.8	male					dna	variants
+case-16_N	normal	case-16	ILLUMINA		male					dna	variants
+case-16_T	tumor	case-16	ILLUMINA	0.91	male					dna	variants
+case-17_N	normal	case-17	ILLUMINA		female					dna	variants
+case-17_T	tumor	case-17	ILLUMINA	0.5	female					dna	variants
+case-18_N	normal	case-18	ILLUMINA		female					dna	variants
+case-18_T	tumor	case-18	ILLUMINA	0.6	female					dna	variants
+case-19_N	normal	case-19	ILLUMINA		female					dna	variants
+case-19_T	tumor	case-19	ILLUMINA	0.7	female					dna	variants
+case-20_N	normal	case-20	ILLUMINA		female					dna	variants
+case-20_T	tumor	case-20	ILLUMINA	0.6	female					dna	variants

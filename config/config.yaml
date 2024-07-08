@@ -111,17 +111,17 @@ calling:
     # Filters will be applied independenty, and can be referred in FDR control below
     # to generate calls for different events.
     # You can for example filter by ANN fields, ID or dbsnp annotations here.
-    impact_filter: "ANN['IMPACT'] == 'HIGH'"
+    impact_filter: "ANN['IMPACT'] == 'HIGH' or ANN['IMPACT'] == 'MODERATE'"
     # If you need to use vembrane command line options beyond the filter expression,
     # please use the filter sub-structure with 'expression:' for the filter expression
     # and "aux-files:" for additional files with IDs for filtering. This can for example
     # be used for filtering by gene lists (with a file containing one gene name per line).
     gene_list_filter:
       aux-files:
-        super_interesting_genes: "config/super_interesting_genes.tsv"
-      expression: "ANN['GENE'] in AUX['super_interesting_genes']"
+        super_interesting_genes: "config/OncoKB_05_01_2024.tsv"
+      expression: "ANN['SYMBOL'] in AUX['super_interesting_genes']"
   fdr-control:
-    threshold: 0.05
+    threshold: 0.01
     # denote FDR control mode, see https://varlociraptor.github.io/docs/filtering
     mode: local-smart
     events:
@@ -129,19 +129,19 @@ calling:
       # The id of each event can be chosen freely, but needs to contain
       # only alphanumerics and underscores
       # ("some_id" below is just an example and can be modified as needed).
-      some_id:
+      vgp:
         types: ["variants", "fusions"]
         # labels for the callset, displayed in the report. Will fall back to id if no labels specified
         labels:
-          some-label: label text
-          other-label: label text
+          some-label: virtual gene panel
+          other-label: VAF > 0.1
         # optional subcategory for callset (e.g. "known variants", or "VUS"),
         # comment out or remove to disable
-        subcategory: some subcategory
+        #subcategory: some subcategory
         # Natural language description of the callset obtained here.
         # This will occur in the report.
         desc: |
-          Some description.
+          virtual gene panel with VAF >= 0.1 and FDR = 0.01.
         varlociraptor:
           # Add varlociraptor events to aggregated over.
           # The probability for the union of these events is used for controlling
@@ -154,6 +154,31 @@ calling:
           # Multiple filters can be defined as list and will be concatenated by 'and'
           - impact_filter
           - gene_list_filter
+
+      all_genes:
+        types: ["variants", "fusions"]
+        # labels for the callset, displayed in the report. Will fall back to id if no labels specified
+        labels:
+          some-label: all genes
+          other-label: VAF > 0.1
+        # optional subcategory for callset (e.g. "known variants", or "VUS"),
+        # comment out or remove to disable
+        #subcategory: some subcategory
+        # Natural language description of the callset obtained here.
+        # This will occur in the report.
+        desc: |
+          all genes with VAF >= 0.1 and FDR = 0.01.
+        varlociraptor:
+          # Add varlociraptor events to aggregated over.
+          # The probability for the union of these events is used for controlling
+          # the FDR.
+          - somatic_tumor_high
+          - somatic_tumor_medium
+        filter: # myfilter
+          # Add any number of filters here.
+          # A single filter can be set as string.
+          # Multiple filters can be defined as list and will be concatenated by 'and'
+          - impact_filter
 
 # If calc_consensus_reads is activated duplicates will be merged
 remove_duplicates:
@@ -245,6 +270,6 @@ params:
     call: ""
     # Add extra arguments for varlociraptor preprocess. By default, we limit the depth to 200.
     # Increase this value for panel sequencing!
-    preprocess: "--max-depth 200"
+    preprocess: "--max-depth 300"
   freebayes:
     min_alternate_fraction: 0.05 # Reduce for calling variants with lower VAFs

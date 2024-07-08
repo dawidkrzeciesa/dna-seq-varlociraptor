@@ -6,6 +6,9 @@ rule fastqc:
         zip="results/qc/fastqc/{sample}/{unit}.{fq}_fastqc.zip",  # the suffix _fastqc.zip is necessary for multiqc to find the file. If not using multiqc, you are free to choose an arbitrary filename
     log:
         "logs/fastqc/{sample}/{unit}.{fq}.log",
+    threads: 1
+    resources:
+        mem_mb = 1024
     wrapper:
         "v2.10.0/bio/fastqc"
 

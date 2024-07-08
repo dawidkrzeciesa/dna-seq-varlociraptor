@@ -10,7 +10,7 @@ rule map_reads:
         extra=get_read_group,
         sorting=get_map_reads_sorting_params,
         sort_order=lambda wc: get_map_reads_sorting_params(wc, ordering=True),
-    threads: 8
+    threads: max(workflow.cores / 2, 1)
     wrapper:
         "v3.8.0/bio/bwa/mem"
 
@@ -211,6 +211,6 @@ rule apply_bqsr:
         "logs/gatk/gatk_applybqsr/{sample}.log",
     params:
         extra=config["params"]["gatk"]["applyBQSR"],  # optional
-        java_opts="",  # optional
+        java_opts="-Dsamjdk.compression_level=9",  # optional
     wrapper:
         "v2.3.2/bio/gatk/applybqsr"
